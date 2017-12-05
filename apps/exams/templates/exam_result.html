@@ -1,0 +1,36 @@
+<h1 class="center">Você concluiu este simulado!</h1>
+<h3 class="center">Sua pontuação: {{ exam.grade }}
+  {% if exam.above_average %}
+    <i class="material-icons green-text">thumb_up</i>
+  {% else %}
+    <i class="material-icons red-text">thumb_down</i>
+  {% endif %}
+</h3>
+<ul class="collapsible" data-collapsible="accordion">
+{% for answer in exam.answers.all %}
+  <br>
+  <li>
+    <div class="collapsible-header">Questão {{ forloop.counter }}</div>
+    <div class="collapsible-body">
+      <p>{{ answer.choice.question.description }}</p>
+      <ol type="a">
+        {% for choice in answer.choice.question.choices.all %}
+          <li>
+            {% if answer.choice == choice %}
+              <b>{{ choice.description }}</b>
+            {% else %}
+              {{ choice.description }}
+            {% endif %}
+
+            {% if choice.correct %}
+              <i class="material-icons green-text">check</i>
+            {% else %}
+              <i class="material-icons red-text">close</i>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </li>
+{% endfor %}
+</ul>

@@ -1,0 +1,13 @@
+<nav class="blue">
+  <div class="nav-wrapper">
+    <a href="{% url 'common:index' %}" class="brand-logo">Simulaê</a>
+    <ul id="nav-mobile" class="side-nav">
+      {% include 'nav_items.html' %}
+    </ul>
+    <ul class="right hide-on-med-and-down">
+      {% include 'nav_items.html' %}
+    </ul>
+    <a href="#" data-activates="nav-mobile" class="button-collapse right"><i class="material-icons">menu</i></a>
+  </div>
+</nav>
+<script>$(".button-collapse").sideNav({edge: 'right'});</script>

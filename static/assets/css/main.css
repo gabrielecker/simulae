@@ -1,0 +1,68 @@
+button {
+    margin-bottom: 20px !important;
+}
+
+footer {
+    /* TODO: Try to fix this motherfucker at the bottom */
+    text-align: center;
+}
+
+.brand-logo {
+    margin-left: 20px;
+}
+
+@media (max-width: 992px) {
+    .brand-logo {
+        margin-left: 0px;
+    }
+}
+
+.errors {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #f44336;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.page-links {
+    display: inline-block;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.subject-icon {
+    display: block;
+    margin: auto;
+    width: 50%;
+}
+
+.subject-card {
+    width: 100%;
+}
+
+.subject-input {
+    margin-top: 20px;
+}
+
+.subject-label > img {
+    width: 20%;
+    margin-left: 10px;
+}
+
+.footer-logo {
+    width: 25px;
+    filter: invert(100%);
+}
+
+.exam-info {
+    font-size: 12px;
+}

@@ -1,0 +1,24 @@
+<h3 class="center blue-text text-darken-3">Questão</h3>
+{% if exam.current.image %}
+  <img src="{{ exam.current.image.url }}">
+  <br>
+{% endif %}
+{{ exam.current.description }}
+<form id="question">
+  {% csrf_token %}
+  <input type="hidden" name="exam" value="{{ exam.id }}" />
+  <ul>
+    {% for choice in exam.current.choices.all %}
+      <li>
+        <input id="choice-{{ choice.id }}" name="choice" type="radio" value="{{ choice.id }}"/>
+        <label for="choice-{{ choice.id }}" class="black-text">{{ choice.description }}</label>
+      </li>
+    {% endfor %}
+  </ol>
+  <div class="center">
+    <br><br>
+    <button id="submit" class="btn waves-effect waves-light blue">
+      Enviar <i class="material-icons right">send</i>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <h3 class="center blue-text text-darken-3">{{ subject.name }}</h3>
+    {% if subject.icon %}
+      <img src="{{ subject.icon.url }}" class="subject-icon" height=100 />
+    {% else %}
+      <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/45447-200.png" class="subject-icon"/>
+    {% endif %}
+    <br>
+    <h5 class="center">Principais tópicos</h5>
+    <br>
+    <div class="row">
+      {% for topic in subject.topics.all %}
+        <div class="col s12 m4">
+          <a href="{% url 'subjects:topic-detail' topic.id %}" class="truncate blue-text text-darken-2">
+            {{ topic.name }}
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

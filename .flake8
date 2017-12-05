@@ -1,0 +1,11 @@
+[flake8]
+max-line-length = 100
+ignore =
+    # H301: one import per line
+    H301,
+    # H306: imports not in alphabetical order (time, os)
+    H306
+exclude =
+    .git,
+    migrations,
+    manage.py

@@ -1,0 +1,10 @@
+<li><a href="{% url 'subjects:subject-list' %}">Disciplinas do ENEM</a></li>
+{% if user.is_authenticated %}
+  <li><a href="{% url 'exams:create-exam' %}">Iniciar simulado</a></li>
+  <li><a href="{% url 'exams:exam-list' %}">Meus simulados</a></li>
+  <li><a href="{% url 'stats:user-stats' %}">Estatísticas</a></li>
+  <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+{% else %}
+  <li><a href="{% url 'accounts:login' %}">Login</a></li>
+  <li><a href="{% url 'accounts:register' %}">Cadastro</a></li>
+{% endif %}

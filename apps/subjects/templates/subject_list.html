@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <h3 class="center blue-text text-darken-3">Disciplinas do ENEM</h3>
+    <div class="row">
+      {% for subject in subjects %}
+        <div class="col s6 m3">
+          <a href="{% url 'subjects:subject-detail' subject.id %}">
+            <div class="card blue-grey lighten-3 waves-effect waves-light subject-card">
+              <div class="card-content black-text">
+                {% if subject.icon %}
+                  <img src="{{ subject.icon.url }}" class="subject-icon"/>
+                {% else %}
+                  <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/45447-200.png" class="subject-icon"/>
+                {% endif %}
+                <span class="card-title center truncate">
+                  {{ subject.name }}
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% empty %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons large">school</i></h2>
+            <h5 class="center">Conteúdos da prova</h5>
+            <p class="light">
+              Aqui você pode conferir quais tópicos relacionados às matérias principais são cobrados
+              na prova, auxiliando a estudar com foco nos assuntos que realmente serão importantes.
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons large">layers</i></h2>
+            <h5 class="center">Links auxiliares</h5>
+            <p class="light">
+              Para cada um dos tópicos é possível encontrar algumas referências para estudos caso o aluno
+              ainda não tenha ideia por onde começar a estudar. Bons estudos!
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

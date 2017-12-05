@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <h3 class="center blue-text text-darken-3">Opções do simulado</h3>
+    <div class="row">
+      <form id="exam" method="get" action="{% url 'exams:start-exam' %}">
+        {% csrf_token %}
+        {% for subject in subjects %}
+          <div class="col s6 m3 subject-input">
+            <input type="checkbox" name="subjects" class="filled-in" id="subject_{{ subject.id }}"
+            checked="checked" value="{{ subject.id }}"/>
+            <label for="subject_{{ subject.id }}" class="blue-text text-darken-4 subject-label">
+              <span class="truncate">{{ subject.name }}</span>
+            </label>
+          </div>
+        {% endfor %}
+        <div class="col s12 m8 offset-m2 l4 offset-l4">
+          <p class="range-field center">
+            <label for="length">Quantidade de questões:</label>
+            <output name="amount" for="length" class="grey-text">1</output>
+            <input type="range" id="length" min="1" max="{{ count }}" name="length"
+            value="1" oninput="amount.value=length.value"/>
+          </p>
+        </div>
+        <div class="col s12 center">
+          <br><br>
+          <button type="submit" class="btn-large waves-effect waves-light blue">
+            Criar simulado <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

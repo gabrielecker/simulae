@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="container">
+    <h3 class="center blue-text text-darken-3">
+      <i class="material-icons large blue-text text-darken-3">show_chart</i> Estatísticas
+    </h3>
+    <br>
+    <h5 class="center blue-text text-darken-4">Questões respondidas por disciplina</h5>
+    <div id="chart" class="center"></div>
+  </div>
+  <link rel="stylesheet" href="{% static 'assets/css/c3.min.css'%}"/>
+  <script src="{% static 'assets/js/d3.min.js' %}" charset="utf-8"></script>
+  <script src="{% static 'assets/js/c3.min.js' %}"></script>
+  <script>
+    "use strict";
+
+    c3.generate({
+      bindTo: "#chart1",
+      data: {
+        columns: [
+          ["Português", 3], ["Inglês", 7], ["Matemática", 13],
+          ["Química", 4], ["Física", 5], ["Biologia", 9], ["Geografia", 11],
+        ],
+        type : 'pie'
+      }
+    });
+  </script>
+{% endblock %}

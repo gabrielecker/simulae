@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    {% if exam.current %}
+      {% include 'exam_form.html' %}
+    {% else %}
+      {% include 'exam_result.html' %}
+    {% endif %}
+  </div>
+  {% include 'question_hint.html' %}
+  <script>
+    // This was written for prototype purposes
+    // Kids, don't try this at home!
+
+    $(".modal").modal({dismissible: false});
+    let form = document.getElementById("question");
+
+    function formToJSON(form) {
+      let formData = new FormData(form), json = {};
+
+      for(let [key, value] of formData.entries()) {
+        json[key] = value;
+      }
+
+      return JSON.stringify(json);
+    }
+
+    function getHeaders() {
+      let headers = new Headers();
+      headers.append("X-CSRFToken", "{{ csrf_token }}");
+      headers.append("Accept", "application/json");
+      headers.append("Content-Type", "application/json");
+      return headers;
+    }
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      fetch("{% url 'exams:answer' %}", {
+        method: "post",
+        body: formToJSON(form),
+        headers: getHeaders(),
+        credentials: "include"
+      }).then(function(response) {
+        response.json().then(function(result) {
+          $("#modal-header").html(result.correct ? "Correto!" : "Errado!");
+          $("#modal-text").html(result.hint);
+          $("#modal").modal("open");
+        });
+      }).catch(function(error) {
+        $("#modal-header").html("Erro!");
+        $("#modal-text").html(error);
+        $("#modal").modal("open");
+      });
+    });
+  </script>
+{% endblock %}

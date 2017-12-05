@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      {% for reference in topic.references.all %}
+        <div class="col l4 m6 s12">
+          <div class="card">
+            <div class="card-image">
+              <img src="{{ reference.image.url }}" />
+            </div>
+            <div class="card-content">
+              <p>{{ reference.description }}</p>
+            </div>
+            <div class="card-action center">
+              <a href="{{ reference.link }}" target="_blank" class="blue-text">Mais informações</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="center">Não há referências para este tópico nos registros.</p>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

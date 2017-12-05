@@ -1,0 +1,19 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - apt-get update
+before_script:
+  - docker-compose up --build -d
+  - source $(pipenv --venv)/bin/activate
+script:
+  - coverage run --source='.' manage.py test
+  - flake8
+after_script:
+  - docker-compose down
+deploy:
+  provider: heroku
+  app: simulae
+  run:
+    - python manage.py migrate
+  skip_cleanup: true

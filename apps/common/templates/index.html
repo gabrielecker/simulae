@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br><br>
+      <h1 class="header center blue-text text-darken-3">Simulaê</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Uma plataforma de auxílio nos estudos para o ENEM</h5>
+      </div>
+      <div class="row center">
+        <a href="{% url 'exams:create-exam' %}" id="download-button" class="btn-large waves-effect waves-light blue pulse">
+          <i class="material-icons float-left">play_circle_outline</i>&nbsp;Iniciar!
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons large">spellcheck</i></h2>
+            <h5 class="center">Questões do ENEM</h5>
+            <p class="light">
+              A plataforma possui milhares de questões reais retiradas das edições anteriores do
+              ENEM que avaliam diversas competências exigidas na prova oficial, permitindo que os usuários
+              passem por uma experiência mais próxima da realidade.
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons large">show_chart</i></h2>
+            <h5 class="center">Estatísticas</h5>
+            <p class="light">
+              A partir dos resultados obtidos pelos simulados anteriores, são oferecidas algumas informações
+              estatísticas sobre o desempenho do usuário em determinados conteúdos, permitindo que criem
+              cronogramas de estudos mais adequados.
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons large">zoom_out_map</i></h2>
+            <h5 class="center">Flexibilidade</h5>
+            <p class="light">
+              Os simulados podem ser gerados de diversas formas de acordo com a necessidade dos usuários,
+              permitindo que testem suas habilidades nos pontos mais críticos a partir das estatísticas obtidas
+              ou comprovem se conteúdos já estudados estão realmente dominados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

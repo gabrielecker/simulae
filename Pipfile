@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+[dev-packages]
+ipdb = "*"
+coverage = "*"
+flake8 = "*"
+model_mommy = "*"
+
+[packages]
+Django = "*"
+dj-database-url = "*"
+Pillow = "*"
+psycopg2 = "*"
+python-decouple = "*"
+gunicorn = "*"
+whitenoise = "*"
+django-cleanup = "*"
+djangorestframework = "*"
