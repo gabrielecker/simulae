@@ -5,15 +5,12 @@ ENV PYTHONUNBUFFERED 1
 
 RUN mkdir /code
 WORKDIR /code
+COPY . /code
 
-COPY Pipfile Pipfile.lock /code/
 RUN apk update \
     && apk add --virtual build-deps gcc python3-dev musl-dev \
     && apk add postgresql postgresql-dev jpeg-dev zlib-dev make \
-    && pip install pipenv && pipenv install --dev
-
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh \
+    && pip install pipenv && pipenv install --dev  \
+    && mv docker-entrypoint.sh /usr/local/bin/ \
+    && chmod +x /usr/local/bin/docker-entrypoint.sh \
     && ln -s /usr/local/bin/docker-entrypoint.sh /
-
-ADD . /code/
