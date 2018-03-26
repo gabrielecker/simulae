@@ -6,11 +6,23 @@
     <i class="material-icons red-text">thumb_down</i>
   {% endif %}
 </h3>
+<ul class="center">
+  <li><b>Negrito</b> - Alternativa marcada pelo aluno</li>
+  <li><i class="material-icons green-text">check</i> - Alternativa correta</li>
+  <li><i class="material-icons red-text">close</i> - Alternativas erradas</li>
+</ul>
 <ul class="collapsible" data-collapsible="accordion">
 {% for answer in exam.answers.all %}
   <br>
   <li>
-    <div class="collapsible-header">Questão {{ forloop.counter }}</div>
+    <div class="collapsible-header">
+      Questão {{ forloop.counter }} -
+      {% if answer.is_correct %}
+        CORRETA
+      {% else %}
+        ERRADA
+      {% endif %}
+    </div>
     <div class="collapsible-body">
       <p>{{ answer.choice.question.description }}</p>
       <ol type="a">

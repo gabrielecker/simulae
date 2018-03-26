@@ -156,4 +156,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 FIXTURE_DIRS = [
     'apps/subjects/fixtures',
     'apps/accounts/fixtures',
+    'apps/exams/fixtures',
 ]

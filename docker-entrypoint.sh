@@ -17,8 +17,6 @@ python manage.py migrate
 
 # Load initial data
 echo "Loading initial data"
-python manage.py loaddata subjects
-python manage.py loaddata topics
-python manage.py loaddata users
+python manage.py loaddata subjects topics questions users
 
 exec "$@"
