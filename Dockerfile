@@ -8,9 +8,15 @@ WORKDIR /code
 COPY . /code
 
 RUN apk update \
-    && apk add --virtual build-deps gcc python3-dev musl-dev \
-    && apk add postgresql postgresql-dev jpeg-dev zlib-dev make \
+    && apk add --update gcc postgresql make jpeg \
+    && apk add --update --virtual build-deps \
+    python3-dev \
+    musl-dev \
+    postgresql-dev \
+    jpeg-dev \
+    zlib-dev \
     && pip install pipenv && pipenv install --dev  \
+    && apk del build-deps \
     && mv docker-entrypoint.sh /usr/local/bin/ \
     && chmod +x /usr/local/bin/docker-entrypoint.sh \
     && ln -s /usr/local/bin/docker-entrypoint.sh /
