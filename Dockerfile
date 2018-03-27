@@ -7,9 +7,8 @@ RUN mkdir /code
 WORKDIR /code
 COPY . /code
 
-RUN apk update \
-    && apk add --update gcc postgresql make jpeg \
-    && apk add --update --virtual build-deps \
+RUN apk add --update gcc postgresql jpeg \
+    && apk add --virtual build-deps \
     python3-dev \
     musl-dev \
     postgresql-dev \
